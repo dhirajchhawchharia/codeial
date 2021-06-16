@@ -7,7 +7,11 @@ module.exports.likes = function(req, res){
 };
 
 module.exports.default = function(req, res){
-    return res.end('<h1>Default</h1>');
+    return res.render('users', {
+        title: 'Users Home'
+    });
+
+    //return res.end('<h1>Default</h1>');
 }
 
 module.exports.posts = function(req, res){
