@@ -10,12 +10,37 @@ module.exports.signInPage = function(req, res){
 
 //Authenciate sign in user data
 module.exports.createSession = function(req, res){
-    User.find({email: req.body.email, password: req.body.password}, function(err, user){
-        if(err || user.length == 0){
-            console.log('Please enter correct details');
+    //find the user
+    User.findOne({email: req.body.email}, function(err, user){
+        if(err){
+            console.log('Error in finding user in signing in');
             return;
         }
-        console.log('Successfully signed In ', user);
-        return res.redirect('back');
+
+        //handle user found
+        if(user){
+            //handle password which doesn't match
+            if(user.password != req.body.password){
+                return res.redirect('back');
+            }
+
+            //handle session createSession
+            res.cookie('user_id', user.id);
+            return res.redirect('/users/profile');
+        }
+        else{
+            //handle user not found
+            return res.redirect('back');
+        }
     });
+
+
+
+    
+
+
+    
+
+
+
 }
