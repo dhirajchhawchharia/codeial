@@ -4,6 +4,6 @@ const router = express.Router();
 const signInController = require('../controllers/sign_in_controller');
 
 router.get('/', signInController.signInPage);
-router.post('/details', signInController.signInForm);
+router.post('/create-session', signInController.createSession);
 
 module.exports = router;
