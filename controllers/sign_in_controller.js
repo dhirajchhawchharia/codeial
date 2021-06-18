@@ -26,7 +26,10 @@ module.exports.createSession = function(req, res){
 
             //handle session createSession
             res.cookie('user_id', user.id);
-            return res.redirect('/users/profile');
+            return res.render('user_profile', {
+                title: 'Signed In',
+                user: user
+            });
         }
         else{
             //handle user not found

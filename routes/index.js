@@ -12,6 +12,7 @@ router.use('/users', require('./users'));
 router.use('/about', require('./about'));
 router.use('/sign-up', require('./signup'));
 router.use('/sign-in', require('./signin'));
+router.use('/sign-out', require('./signout'));
 
 //for any further routes, access from here
 //router.use('/routerName', require('./routerFile'));
